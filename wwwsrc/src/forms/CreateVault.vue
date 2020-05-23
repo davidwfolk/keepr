@@ -1,6 +1,6 @@
 <template>
   <div class="CreateKeep">
-    <form @submit.prevent="createKeep()">
+    <form @submit.prevent="createVault()">
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -8,7 +8,7 @@
           name="name"
           class="form-control"
           placeholder="Enter name...."
-          v-model="newKeep.name"
+          v-model="newVault.name"
         />
       </div>
       <div class="form-group">
@@ -18,10 +18,10 @@
           name="model"
           class="form-control"
           placeholder="Enter description...."
-          v-model="newKeep.description"
+          v-model="newVault.description"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Create Post</button>
+      <button type="submit" class="btn btn-primary">Create Vault</button>
     </form>
   </div>
 </template>
@@ -32,14 +32,13 @@ export default {
   name: 'CreateKeep',
   data() {
     return {
-      isPrivate: true,
-      newKeep: {}
+      newVault: {}
     }
   },
   computed: {},
   methods: {
       createVault() {
-        this.$store.dispatch("createKeep", this.newKeep)
+        this.$store.dispatch("createVault", this.newVault)
       }
 
   },

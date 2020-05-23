@@ -39,7 +39,7 @@ namespace Keepr.Controllers
         throw;
       }
     }
-
+    [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Vault> GetById(int id)
     {
@@ -76,6 +76,7 @@ namespace Keepr.Controllers
     //!SECTION end GET requests
 
     //SECTION POST requests
+    
     [Authorize]
     [HttpPost]
     public ActionResult<Vault> Create([FromBody] Vault newVault)

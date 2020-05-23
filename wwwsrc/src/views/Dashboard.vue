@@ -46,7 +46,7 @@ export default {
     Modal,
     CreateKeep,
     KeepDetails,
-    Keep
+    Keep,
   }
 };
 </script>

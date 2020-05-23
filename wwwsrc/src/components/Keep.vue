@@ -20,7 +20,7 @@
             : {{keepData.keeps}}
           </span>
         </li>
-        <li class="list-group-item">
+        <!-- <li class="list-group-item">
           <span
             class="mx-2"
             data-toggle="modal"
@@ -35,13 +35,14 @@
           <span class="mx-2">
             <i class="fas fa-share bg-warning p-3"></i>
           </span>
-          <!-- <Modal title="Post Details" id="keepDetailsModal">
+          <Modal title="Post Details" id="keepDetailsModal">
               <Vault></Vault>
-            </Modal> -->
+            </Modal>
           <span class="mx-2">
             <i class="fas fa-download bg-primary p-3"></i>
           </span>
-        </li>
+        </li> -->
+        <Buttons :keepData="keepData"></Buttons>
       </ul>
   </div>
 </template>
@@ -50,6 +51,7 @@
 <script>
 import Modal from "../components/Modal"
 import KeepDetails from "../components/KeepDetails"
+import Buttons from "../components/Buttons"
 // import Vault from "../forms/Vault"
 export default {
   name: 'keep',
@@ -59,16 +61,17 @@ export default {
   },
   computed: {},
   methods: {
-    getActiveKeep() {
-      this.keepData.views += 1,
-      this.$store.dispatch("editKeep", this.keepData )
-      this.$store.commit("setActiveKeep", this.keepData)
+    // getActiveKeep() {
+    //   this.keepData.views += 1,
+    //   this.$store.dispatch("editKeep", this.keepData )
+    //   this.$store.commit("setActiveKeep", this.keepData)
       
-    }
+    // }
   },
   components: {
     Modal,
     KeepDetails,
+    Buttons,
     // Vault
   }
 }
