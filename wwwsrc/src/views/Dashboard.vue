@@ -10,7 +10,7 @@
           data-target="#createKeepModal"
         >Add a Post</button>
         <Modal title="Create a Post" id="createKeepModal">
-          <CreateKeep />
+          <CreateKeep></CreateKeep>
         </Modal>
       </div>
       <div class="row card-deck">

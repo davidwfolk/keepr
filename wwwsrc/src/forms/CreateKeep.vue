@@ -1,6 +1,6 @@
 <template>
   <div class="CreateKeep">
-    <form @submit.prevent="createKeep()">
+    <form>
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -31,11 +31,11 @@
           v-model="newKeep.img"
         />
       </div>
-      <div class="form-check mb-4">
-        <input type="checkbox" class="form-check-input" id="isPrivate" @click="togglePublic()" />
-        <label class="form-check-label" for="isPrivate">Post to Public?</label>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" value="" id="isPrivate" @click="togglePublic()" />
+        <label class="form-check-label" for="isPrivate">Keep Post Private?</label>
       </div>
-      <button type="submit" class="btn btn-primary">Create Post</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="createKeep()">Create Post</button>
     </form>
   </div>
 </template>
@@ -46,23 +46,24 @@ export default {
   name: 'CreateKeep',
   data() {
     return {
-      isPrivate: true,
+      isPrivate: false,
       newKeep: {}
     }
   },
   computed: {},
   methods: {
-        togglePublic() {
-      if (this.isPrivate) {
-        this.isPrivate = false;
+    togglePublic() {
+      if (isPrivate) {
+        isPrivate = true;
       } else {
-        this.isPrivate = true;
+        isPrivate = false;
       }
     },
-      createKeep() {
-        this.newKeep.isPrivate = this.isPrivate
-        this.$store.dispatch("createKeep", this.newKeep)
-      }
+    createKeep() {
+      debugger
+      this.newKeep.isPrivate = isPrivate
+      this.$store.dispatch("createKeep", this.newKeep)
+    }
 
   },
   components: {}
