@@ -15,12 +15,13 @@
           :key="vault._id"
           :vaultData="vault"
           href="#"
+          @click="testKeepData()"
         >{{vault.name}}</a>
       </div>
     </div>
     <div class="row">
       <h4>or create a new one</h4>
-      <CreateVault></CreateVault>
+      <CreateVault :keepData="keepData"></CreateVault>
     </div>
   </div>
 </template>
@@ -30,6 +31,7 @@
 import CreateVault from "../forms/CreateVault"
 export default {
   name: 'vault',
+  props: ["keepData"],
   data() {
     return {}
   },
@@ -42,7 +44,11 @@ export default {
             
     }
   },
-  methods: {},
+  methods: {
+          testKeepData() {
+        console.log(this.keepData);
+      }
+  },
   components: {
     CreateVault
   }

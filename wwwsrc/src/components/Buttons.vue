@@ -20,7 +20,7 @@
             <i class="fas fa-share bg-warning p-3"></i>
           </span>
           <Modal title="Post Details" id="addVaultModal">
-              <Vault></Vault>
+              <Vault :keepData="keepData"></Vault>
             </Modal>
           <span class="mx-2">
             <i class="fas fa-download bg-primary p-3"></i>

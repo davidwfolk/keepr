@@ -21,7 +21,7 @@
           v-model="newVault.description"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Create Vault</button>
+      <button type="submit" class="btn btn-primary" data-dismiss="modal">Create Vault</button>
     </form>
   </div>
 </template>
@@ -30,6 +30,7 @@
 <script>
 export default {
   name: 'CreateKeep',
+  props:["keepData"],
   data() {
     return {
       newVault: {}
@@ -39,7 +40,9 @@ export default {
   methods: {
       createVault() {
         this.$store.dispatch("createVault", this.newVault)
-      }
+        console.log(this.keepData);
+        
+      },
 
   },
   components: {}
