@@ -28,16 +28,8 @@ namespace Keepr.Services
         throw new Exception("Invalid Id");
       }
       return foundVault;
+  
     }
-    // public Vault GetKeepsByVaultId(int id)
-    // {
-    //   Vault foundVault = _repo.GetKeepsByVaultId(id);
-    //   if (foundVault == null)
-    //   {
-    //     throw new Exception("Invalid Id");
-    //   }
-    //   return foundVault;
-    // }
 
     //!SECTION end GET requests
 
@@ -59,7 +51,7 @@ namespace Keepr.Services
       }
       if (_repo.Delete(id, userId))
       {
-        return "Deleted.  #GolfClap";
+        return "Deleted. #GolfClap";
       }
       throw new Exception("You're gonna need a mulligan...it's not deleting");
     }

@@ -53,25 +53,19 @@ namespace Keepr.Controllers
       }
     }
 
-    // [Authorize]
-    // [HttpGet("{id}/keeps")]
-    // public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
-    // {
-    //   try
-    //   {
-    //     Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-    //     if (user == null)
-    //     {
-    //       throw new Exception("You must be logged in to get your keeps!");
-    //     }
-    //     string userId = user.Value;
-    //     return Ok(_vs.GetKeepsByVaultId(userId));
-    //   }
-    //   catch (System.Exception err)
-    //   {
-    //     return BadRequest(err.Message);
-    //   }
-    // }
+    [Authorize]
+    [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
+    {
+      try
+      {
+        return Ok(_ks.GetKeepsByVaultId(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
     //!SECTION end GET requests
 
