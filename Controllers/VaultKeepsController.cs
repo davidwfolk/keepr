@@ -39,7 +39,7 @@ namespace Keepr.Controllers
 
 
     [HttpDelete("{id}")]
-    public ActionResult<string> Delete(int id)
+    public ActionResult<VaultKeep> Delete(int id)
     {
       try
       {
