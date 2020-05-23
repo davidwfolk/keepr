@@ -49,9 +49,9 @@ export default new Vuex.Store({
     },
 
     //SECTION KEEP GET requests
-    async getMyKeeps({ commit, dispatch }) {
+    async getMyKeeps({ commit, dispatch }, userData) {
       try {
-        let res = await api.get("keeps")
+        let res = await api.get("keeps/user", userData)
         commit("setMyKeeps", res.data)
       } catch (err) {
         alert(JSON.stringify(err));
@@ -66,6 +66,16 @@ export default new Vuex.Store({
         alert(JSON.stringify(err));
       }
     },
+
+    // async getActiveKeep ({commit}, keepId) {
+    //   try {
+    //     debugger
+    //     let res = await api.get("keeps" + keepId)
+    //     commit("setActiveKeep", res.data)
+    //   } catch (err) {
+    //     alert(JSON.stringify(err));
+    //   }
+    // },
         //!SECTION end KEEP GET requests
 
         //SECTION KEEP POST requests
@@ -83,9 +93,28 @@ export default new Vuex.Store({
 
         //SECTION KEEP PUT requests
 
+        async editKeep({ commit, dispatch }, keepData) {
+          try {
+          let res = await api.put("keeps/" + keepData.id, keepData)
+          dispatch("getKeeps")
+        } catch (err) {
+          alert(JSON.stringify(err));
+        }
+        },
+
         //!SECTION end KEEP PUT requests
 
         //SECTION KEEP DELETE requests
+
+        async deleteKeep({ dispatch }, keepData) {
+          try {
+            await api.delete("keeps/" + keepData.id)
+            dispatch("getMyKeeps")
+          } catch (error) {
+            alert(JSON.stringify(error.response.data));
+          }
+    
+        },
 
         //!SECTION end KEEP DELETE requests
 

@@ -1,13 +1,11 @@
 <template>
-  <div class="card col-md-3 mx-3 pt-2 mb-3 border rounded text-center">
-    <span v-if="keepData.isPrivate == false">
-      <img :src="keepData.img" class="card-img-top" alt="..." />
-      <div class="card-body pb-0">
-        <h5 class="card-title m-0">{{keepData.name}}</h5>
+  <div class="keep col-md-3 m-3 pt-2 card text-center">
+      <img :src="keepData.img" class="img-fluid" />
+      <div class="card-body text-bottom pb-0">
+        <h5 class="card-title text-center">{{keepData.name}}</h5>
         <!-- <p class="card-text">{{keep.description}}</p> -->
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item pt-1"></li>
         <li class="list-group-item">
           <span class="mx-3">
             <i class="far fa-eye"></i>
@@ -23,55 +21,56 @@
           </span>
         </li>
         <li class="list-group-item">
-          <span class="mx-2">
+          <span
+            class="mx-2"
+            data-toggle="modal"
+            data-target="#keepDetailsModal"
+            @click="getActiveKeep()"
+          >
             <i class="far fa-eye text-white bg-info p-3"></i>
           </span>
+            <Modal title="Post Details" id="keepDetailsModal">
+              <KeepDetails></KeepDetails>
+            </Modal>
           <span class="mx-2">
             <i class="fas fa-share bg-warning p-3"></i>
           </span>
+          <!-- <Modal title="Post Details" id="keepDetailsModal">
+              <Vault></Vault>
+            </Modal> -->
           <span class="mx-2">
             <i class="fas fa-download bg-primary p-3"></i>
           </span>
         </li>
       </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </span>
-    <span v-else></span>
-    <!-- <button class="btn btn-danger btn-block" @click="deleteCar(car.id)">Delete</button> -->
   </div>
 </template>
 
 
 <script>
+import Modal from "../components/Modal"
+import KeepDetails from "../components/KeepDetails"
+// import Vault from "../forms/Vault"
 export default {
-  name: 'PublicKeeps',
+  name: 'keep',
   props: ["keepData"],
   data() {
-    return {
-    }
+    return {}
   },
-  mounted() {
-    // this.$store.dispatch("getPublicKeeps");
-    // console.log(this.$store.dispatch("getKeeps"));
-
-  },
-  computed: {
-  },
+  computed: {},
   methods: {
-    addView() {
-
-    },
-    addKeep() {
-
-    },
-    addShare() {
-
+    getActiveKeep() {
+      this.keepData.views += 1,
+      this.$store.dispatch("editKeep", this.keepData )
+      this.$store.commit("setActiveKeep", this.keepData)
+      
     }
   },
-  components: {}
+  components: {
+    Modal,
+    KeepDetails,
+    // Vault
+  }
 }
 </script>
 

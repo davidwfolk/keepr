@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <h1 class="text-white text-center">Welcome to Your Board {{user.name}}</h1>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <button
           class="btn btn-secondary col-2 align-self-right"
@@ -13,12 +13,8 @@
           <CreateKeep></CreateKeep>
         </Modal>
       </div>
-      <div class="row card-deck">
-        <div class="col-3 m-3 pt-2 card" v-for="keep in myKeeps" :key="keep.id" :keepData="keep">
-          <img :src="keep.img" class="img-fluid" />
-          <p>{{keep.name}}</p>
-          <p>{{keep.description}}</p>
-        </div>
+      <div class="row justify-content-center">
+        <Keep v-for="keep in myKeeps" :key="keep.id" :keepData="keep"></Keep>
       </div>
     </div>
   </div>
@@ -27,10 +23,13 @@
 <script>
 import Modal from "../components/Modal.vue"
 import CreateKeep from "../forms/CreateKeep.vue"
+import KeepDetails from "../components/KeepDetails"
+import Keep from "../components/Keep"
 export default {
   name: "dashboard",
   mounted() {
-    this.$store.dispatch("getMyKeeps")
+    this.$store.dispatch("getMyKeeps", this.$auth.user)
+
   },
   computed: {
     user() {
@@ -45,7 +44,9 @@ export default {
   },
   components: {
     Modal,
-    CreateKeep
+    CreateKeep,
+    KeepDetails,
+    Keep
   }
 };
 </script>

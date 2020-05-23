@@ -32,7 +32,7 @@
         />
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" value="" id="isPrivate" @click="togglePublic()" />
+        <input type="checkbox" class="form-check-input" value="" id="isPrivate" @click="checkPublic()" />
         <label class="form-check-label" for="isPrivate">Keep Post Private?</label>
       </div>
       <button type="submit" class="btn btn-primary" @click.prevent="createKeep()">Create Post</button>
@@ -52,7 +52,7 @@ export default {
   },
   computed: {},
   methods: {
-    togglePublic() {
+    checkPublic() {
       if (isPrivate) {
         isPrivate = true;
       } else {
