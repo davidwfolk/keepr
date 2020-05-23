@@ -21,20 +21,6 @@
           v-model="newKeep.description"
         />
       </div>
-      <div class="form-group">
-        <label for="img">Image Url</label>
-        <input
-          type="text"
-          name="img"
-          class="form-control"
-          placeholder="Enter image url...."
-          v-model="newKeep.img"
-        />
-      </div>
-      <div class="form-check mb-4">
-        <input type="checkbox" class="form-check-input" id="isPrivate" @click="togglePublic()" />
-        <label class="form-check-label" for="isPrivate">Post to Public?</label>
-      </div>
       <button type="submit" class="btn btn-primary">Create Post</button>
     </form>
   </div>
@@ -52,15 +38,7 @@ export default {
   },
   computed: {},
   methods: {
-        togglePublic() {
-      if (this.isPrivate) {
-        this.isPrivate = false;
-      } else {
-        this.isPrivate = true;
-      }
-    },
-      createKeep() {
-        this.newKeep.isPrivate = this.isPrivate
+      createVault() {
         this.$store.dispatch("createKeep", this.newKeep)
       }
 

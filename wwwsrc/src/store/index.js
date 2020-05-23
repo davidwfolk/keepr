@@ -52,7 +52,6 @@ export default new Vuex.Store({
     async getMyKeeps({ commit, dispatch }) {
       try {
         let res = await api.get("keeps")
-        debugger
         commit("setMyKeeps", res.data)
       } catch (err) {
         alert(JSON.stringify(err));
@@ -70,6 +69,15 @@ export default new Vuex.Store({
         //!SECTION end KEEP GET requests
 
         //SECTION KEEP POST requests
+        
+        async createKeep({ commit, dispatch }, newKeep) {
+          try {
+          let res = await api.post("keeps", newKeep)
+          dispatch("getMyKeeps")
+        } catch (err) {
+          alert(JSON.stringify(err));
+        }
+        },
 
         //!SECTION end KEEP POST requests
 

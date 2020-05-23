@@ -4,9 +4,8 @@
     <h5 class="text-white text-center">Posting the Lastest Golf Equipment & Accessories!</h5>
     <div class="container">
       <publicKeeps></publicKeeps>
+      </div>
     </div>
-
-  </div>
 </template>
 
 <script>

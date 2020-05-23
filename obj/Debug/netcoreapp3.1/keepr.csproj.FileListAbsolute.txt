@@ -30,3 +30,4 @@
 /Users/admin/source/codeworks/Final-Project/keepr/obj/Debug/netcoreapp3.1/keepr.dll
 /Users/admin/source/codeworks/Final-Project/keepr/obj/Debug/netcoreapp3.1/keepr.pdb
 /Users/admin/source/codeworks/Final-Project/keepr/obj/Debug/netcoreapp3.1/keepr.genruntimeconfig.cache
+/Users/admin/source/codeworks/Final-Project/keepr/bin/Debug/netcoreapp3.1/package-lock.json
