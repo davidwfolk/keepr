@@ -38,12 +38,11 @@ namespace Keepr.Repositories
       string sql = @"
         SELECT
         k.*,
-        v.title As Vault,
         vk.id AS VaultKeepId
         FROM vaultkeeps vk
         INNER JOIN keeps k ON k.id = vk.keepId
-        INNER JOIN vaults v ON v.id = vl.vaultId
-        WHERE vaultId = @VaultId AND isPublished = 1";
+        INNER JOIN vaults v ON v.id = vk.vaultId
+        WHERE vaultId = @VaultId";
       return _db.Query<VaultKeepViewModel>(sql, new { vaultId });
     }
 
