@@ -1,5 +1,5 @@
 <template>
-  <div class="CreateKeep">
+  <div class="CreateVault">
     <form @submit.prevent="createVault()">
       <div class="form-group">
         <label for="name">Name</label>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'CreateKeep',
+  name: 'CreateVault',
   props:["keepData"],
   data() {
     return {
@@ -40,7 +40,7 @@ export default {
   methods: {
       createVault() {
         this.$store.dispatch("createVault", this.newVault)
-        console.log(this.keepData);
+        // console.log(this.keepData);
         
       },
 

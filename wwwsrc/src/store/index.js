@@ -116,10 +116,14 @@ export default new Vuex.Store({
           } catch (error) {
             alert(JSON.stringify(error.response.data));
           }
-    
         },
 
         //!SECTION end KEEP DELETE requests
+
+// ______________________________________________________________________________________
+// ______________________________________________________________________________________
+
+        //SECTION VAULT GET requests
 
         async getVaults({ commit, dispatch }) {
           try {
@@ -129,10 +133,6 @@ export default new Vuex.Store({
             alert(JSON.stringify(err));
           }
         },
-
-        //SECTION VAULT GET requests
-
-
 
         //!SECTION end VAULT GET requests
 
@@ -149,14 +149,51 @@ export default new Vuex.Store({
 
         //!SECTION end VAULT POST requests
 
-        //SECTION VAULT PUT requests
-
-        //!SECTION end VAULT PUT requests
 
         //SECTION VAULT DELETE requests
+        async deleteVault({ dispatch }, vaultData) {
+          try {
+            await api.delete("vaults/" + vaultData.id)
+            dispatch("getVaults")
+          } catch (error) {
+            alert(JSON.stringify(error.response.data));
+          }
+        },
 
         //!SECTION end VAULT DELETE requests
+        
+// ______________________________________________________________________________________
+// ______________________________________________________________________________________
 
+        //SECTION VAULTKEEPS GET requests
+
+        async getVaultKeeps({ commit, dispatch }) {
+          try {
+            let res = await api.get("vaults")
+            commit("setVaults", res.data)
+          } catch (err) {
+            alert(JSON.stringify(err));
+          }
+        },
+
+        //!SECTION end VAULTKEEPS GET requests
+
+        //SECTION VAULTKEEPS POST requests
+
+        async createVaultKeep({ commit, dispatch }, newVaultKeep) {
+          try {
+          let res = await api.post("vaultkeeps", newVaultKeep)
+          dispatch("getVaultKeeps")
+        } catch (err) {
+          alert(JSON.stringify(err));
+        }
+        },
+
+        //!SECTION end VAULTKEEPS POST requests
+
+        //SECTION VAULTKEEPS DELETE requests
+
+        //!SECTION end VAULTKEEPS DELETE requests
 
     }
     });

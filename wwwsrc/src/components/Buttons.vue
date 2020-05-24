@@ -16,6 +16,7 @@
             class="mx-2"
             data-toggle="modal"
             data-target="#addVaultModal"
+            @click="setActiveKeep()"
             >
             <i class="fas fa-share bg-warning p-3"></i>
           </span>
@@ -48,9 +49,9 @@ export default {
       this.$store.dispatch("editKeep", this.keepData )
       this.$store.commit("setActiveKeep", this.keepData)
     },
-      // addToVault() {
-      //   this.$store.dispatch("addToVault", this.vaultData)
-      // }
+    setActiveKeep() {
+      this.$store.commit("setActiveKeep", this.keepData) 
+    }
   },
   components:{
     KeepDetails,

@@ -15,7 +15,7 @@
           :key="vault._id"
           :vaultData="vault"
           href="#"
-          @click="testKeepData()"
+          @click="addToVault()"
         >{{vault.name}}</a>
       </div>
     </div>
@@ -40,13 +40,15 @@ export default {
   },
   computed: {
     vaults() {
-      return this.$store.state.vaults
-            
+      return this.$store.state.vaults     
+    },
+    activeKeep(){
+      return this.$store.state.activeKeep
     }
   },
   methods: {
-          testKeepData() {
-        console.log(this.keepData);
+     addToVaultKeep() {
+        console.log(this.activeKeep.name);
       }
   },
   components: {

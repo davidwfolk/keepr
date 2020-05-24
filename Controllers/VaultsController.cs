@@ -39,6 +39,27 @@ namespace Keepr.Controllers
         throw;
       }
     }
+
+    [Authorize]
+    [HttpGet("user")]
+    public ActionResult<IEnumerable<Vault>> GetVaultsByUser()
+    {
+      try
+      {
+        Claim user = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        if (user == null)
+        {
+          throw new Exception("You must be logged in to get your keeps!");
+        }
+        string userId = user.Value;
+        return Ok(_vs.GetByUserId(userId));
+      }
+      catch (System.Exception err)
+      {
+        return BadRequest(err.Message);
+      }
+    }
+
     [Authorize]
     [HttpGet("{id}")]
     public ActionResult<Vault> GetById(int id)

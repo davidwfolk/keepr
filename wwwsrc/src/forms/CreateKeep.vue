@@ -32,10 +32,10 @@
         />
       </div>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" value="" id="isPrivate" @click="checkPublic()" />
+        <input type="checkbox" class="form-check-input" value="true" unchecked-value="false" id="isPrivate" @click="checkPublic()"  />
         <label class="form-check-label" for="isPrivate">Keep Post Private?</label>
       </div>
-      <button type="submit" class="btn btn-primary" @click.prevent="createKeep()">Create Post</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="createKeep()" data-dismiss="modal">Create Post</button>
     </form>
   </div>
 </template>
@@ -53,15 +53,14 @@ export default {
   computed: {},
   methods: {
     checkPublic() {
-      if (isPrivate) {
-        isPrivate = true;
-      } else {
-        isPrivate = false;
-      }
+        if (isPrivate) {
+          this.isPrivate = true;
+        } else {
+          this.isPrivate = false;
+        }
     },
     createKeep() {
-      debugger
-      this.newKeep.isPrivate = isPrivate
+      this.newKeep.isPrivate = this.isPrivate
       this.$store.dispatch("createKeep", this.newKeep)
     }
 
