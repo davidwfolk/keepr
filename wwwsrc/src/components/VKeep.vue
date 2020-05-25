@@ -1,23 +1,23 @@
 <template>
   <div class="keep col-md-3 m-3 pt-2 card text-center">
-      <img :src="keepData.img" class="img-fluid" />
+      <img :src="vaultKeepData.img" class="img-fluid" />
       <div class="card-body text-bottom pb-0">
-        <h5 class="card-title text-center">{{keepData.name}}</h5>
+        <h5 class="card-title text-center">{{vaultKeepData.name}}</h5>
         <!-- <p class="card-text">{{keep.description}}</p> -->
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <span class="mx-2">
             <i class="far fa-eye"></i>
-            : {{keepData.views}}
+            : {{vaultKeepData.views}}
           </span>
           <span class="mx-2">
             <i class="fas fa-download"></i>
-            : {{keepData.keeps}}
+            : {{vaultKeepData.keeps}}
           </span>
           <span class="mx-2">
             <i class="fas fa-share"></i>
-            : {{keepData.shares}}
+            : {{vaultKeepData.shares}}
           </span>
         </li>
         <!-- <li class="list-group-item">
@@ -42,7 +42,13 @@
             <i class="fas fa-download bg-primary p-3"></i>
           </span>
         </li> -->
-        <Buttons :keepData="keepData"></Buttons>
+        <Buttons :keepData="vaultKeepData"></Buttons>
+        <li class="list-group-item">
+          <button class="btn btn-danger" @click="removeFromLocker()">
+            Remove from Locker     
+          </button>
+
+        </li>
       </ul>
   </div>
 </template>
@@ -55,18 +61,21 @@ import Buttons from "../components/Buttons"
 // import Vault from "../forms/Vault"
 export default {
   name: 'keep',
-  props: ["keepData"],
+  props: ["vaultKeepData"],
   data() {
     return {}
   },
+  mounted() {
+    return this.$store.state.vaultKeeps
+  },
   computed: {},
   methods: {
-    // getActiveKeep() {
-    //   this.keepData.views += 1,
-    //   this.$store.dispatch("editKeep", this.keepData )
-    //   this.$store.commit("setActiveKeep", this.keepData)
+    removeFromLocker() {
+      // console.log(this.vaultKeepData.vaultKeepId);
       
-    // }
+      this.$store.dispatch("deleteVaultKeep", this.vaultKeepData.vaultKeepId)
+      this.$store.dispatch("getMyVaultKeeps", this.$route.params.vaultId)
+    }
   },
   components: {
     Modal,

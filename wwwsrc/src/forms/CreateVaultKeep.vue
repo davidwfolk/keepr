@@ -21,7 +21,7 @@
           v-model="newVault.description"
         />
       </div>
-      <button type="submit" class="btn btn-primary" @click.prevent="createVault()" data-dismiss="modal">Create Locker</button>
+      <button type="submit" class="btn btn-primary" @click.prevent="addToVaultKeep()" data-dismiss="modal">Create Locker</button>
     </form>
   </div>
 </template>
@@ -36,13 +36,21 @@ export default {
       newVault: {}
     }
   },
+  mounted() {
+    return this.$store.state.myVaults
+  },
   computed: {},
   methods: {
-      createVault() {
-        this.$store.dispatch("createVault", this.newVault)
-        // console.log(this.keepData);
-        
-      },
+     async addToVaultKeep() {
+       try {
+         await this.$store.dispatch("createVault", this.newVault)
+         this.vaultKeep.vaultId = myVaults.id;
+         this.vaultKeep.keepId = this.activeKeep.id;
+         this.$store.dispatch("createVaultKeep", this.vaultKeep);
+       } catch (error) {
+         
+       }
+      }
 
   },
   components: {}

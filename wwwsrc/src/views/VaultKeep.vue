@@ -4,9 +4,7 @@
     <h4 class="text-white text-center">Here you'll find all of your saved posts in your lockers</h4>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <DisplayVaults v-for="vault in myVaults" :key="vault.id" :vaultData="vault"></DisplayVaults>
-
-        
+        <VKeep v-for="vaultKeep in vaultKeeps" :key="vaultKeep.id" :vaultKeepData="vaultKeep"></VKeep>
       </div>
     </div>
   </div>
@@ -15,25 +13,25 @@
 
 <script>
 import DisplayVaults from "../components/DisplayVaults"
+import VKeep from "../components/VKeep"
 export default {
   name: 'vaultkeep',
   data() {
     return {}
   },
-  mounted () {
-      this.$store.dispatch("getMyVaults")
-  },
   computed: {
-        user() {
+    user() {
       return this.$auth.user;
     },
-    myVaults() {
-      return this.$store.state.myVaults     
-    },
+    vaultKeeps() {
+      return this.$store.state.vaultKeeps
+    }
+
   },
   methods: {},
   components: {
-    DisplayVaults
+    DisplayVaults,
+    VKeep
   }
 }
 </script>

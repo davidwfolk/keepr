@@ -20,16 +20,16 @@
         >{{vault.name}}</a>
       </div>
     </div>
-    <div class="row text-center">
+    <!-- <div class="row text-center">
       <h4 class="col-12">or create a new one</h4>
-      <CreateVault class="text-center m-auto" :keepData="keepData"></CreateVault>
-    </div>
+      <CreateVaultKeep class="text-center m-auto" :keepData="keepData"></CreateVaultKeep>
+    </div> -->
   </div>
 </template>
 
 
 <script>
-import CreateVault from "../forms/CreateVault"
+import CreateVaultKeep from "../forms/CreateVaultKeep"
 export default {
   name: 'vault',
   props: ["keepData"],
@@ -57,16 +57,12 @@ export default {
         this.vaultKeep.vaultId = vault.id;
         this.vaultKeep.keepId = this.activeKeep.id;
         this.$store.dispatch("createVaultKeep", this.vaultKeep);
-
-
-        
-        
-        
-
+        this.activeKeep.keeps += 1;
+        this.$store.dispatch("editKeep", this.activeKeep )
       }
   },
   components: {
-    CreateVault
+    CreateVaultKeep
   }
 }
 </script>

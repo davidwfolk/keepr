@@ -3,7 +3,7 @@
     <h3 class="text-white text-center mt-3">Welcome to Your Board {{user.name}}</h3>
     <div class="container-fluid">
       <div class="row justify-content-center mb-3">
-                <button
+        <button
           class="btn btn-secondary mt-3 col-md-2 mr-auto ml-5"
           type="button"
           data-toggle="modal"
@@ -16,12 +16,11 @@
           class="btn btn-secondary mt-3 col-md-2 ml-auto mr-5"
           type="button"
           data-toggle="modal"
-          data-target="#createKeepModal"
+          data-target="#createVaultModal"
         >Create a Locker</button>
-        <Modal title="Create a Post" id="createKeepModal">
-          <CreateVault class="text-center m-auto" :keepData="keepData"></CreateVault>
+        <Modal title="Create a Locker" id="createVaultModal">
+          <CreateVault class="text-center m-auto" :keepData="myKeeps"></CreateVault>
         </Modal>
-        
       </div>
       <div class="row justify-content-center">
         <h4 class="text-primary text-center my-3">Your Lockers</h4>
@@ -48,9 +47,9 @@ import DisplayVaults from "../components/DisplayVaults"
 import CreateVault from "../forms/CreateVault"
 export default {
   name: "dashboard",
-  mounted () {
- 
-      this.$store.dispatch("getMyKeeps", this.$auth.user),
+  mounted() {
+
+    this.$store.dispatch("getMyKeeps", this.$auth.user),
       this.$store.dispatch("getMyVaults")
   },
   computed: {

@@ -26,6 +26,7 @@ export default new Vuex.Store({
     activeKeep: {},
     myVaults: [],
     vaults: [],
+    vaultKeeps: [],
   },
   mutations: {
     setKeeps(state, keeps) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     setVaults(state, vaults) {
       state.vaults = vaults
+    },
+    setVaultKeeps(state, vaultKeeps) {
+      state.vaultKeeps = vaultKeeps
     }
 
   },
@@ -154,6 +158,7 @@ export default new Vuex.Store({
         async createVault({ commit, dispatch }, newVault) {
           try {
           let res = await api.post("vaults", newVault)
+          debugger
           dispatch("getMyVaults")
         } catch (err) {
           alert(JSON.stringify(err));
@@ -189,6 +194,15 @@ export default new Vuex.Store({
           }
         },
 
+        async getMyVaultKeeps({ commit, dispatch }, vaultId) {
+          try {
+            let res = await api.get(`vaults/${vaultId}/keeps`)
+            commit("setVaultKeeps", res.data)
+          } catch (err) {
+            alert(JSON.stringify(err));
+          }
+        },
+
         //!SECTION end VAULTKEEPS GET requests
 
         //SECTION VAULTKEEPS POST requests
@@ -196,7 +210,7 @@ export default new Vuex.Store({
         async createVaultKeep({ commit, dispatch }, newVaultKeep) {
           try {
           let res = await api.post("vaultkeeps", newVaultKeep)
-          dispatch("getVaultKeeps")
+          dispatch("getMyVaultKeeps")
         } catch (err) {
           alert(JSON.stringify(err));
         }
@@ -205,6 +219,15 @@ export default new Vuex.Store({
         //!SECTION end VAULTKEEPS POST requests
 
         //SECTION VAULTKEEPS DELETE requests
+
+        async deleteVaultKeep({ commit, dispatch }, vaultKeepId) {
+          try {
+          let res = await api.delete("vaultkeeps/" + vaultKeepId)
+          // dispatch("getVaultKeeps", vaultKeepData)
+        } catch (err) {
+          alert(JSON.stringify(err));
+        }
+        },
 
         //!SECTION end VAULTKEEPS DELETE requests
 

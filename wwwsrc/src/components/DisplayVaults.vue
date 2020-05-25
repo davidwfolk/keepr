@@ -40,7 +40,8 @@ export default {
   },
   methods:{
     getVaultKeep() {
-      console.log(this.$store.dispatch("getVaultKeep", this.vaultData));
+      this.$store.dispatch("getVaultKeeps", this.vaultData)
+      this.$router.push({name: 'vaultkeep', params: {vaultId: this.vaultData.id}})
       
 
     }
