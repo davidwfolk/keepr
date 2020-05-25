@@ -39,15 +39,17 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getMyVaults", this.$auth.user.sub)
+    // this.$store.dispatch("getMyVaults", this.$auth.user.sub)
   },
   computed: {
     myVaults() {
-      
       return this.$store.state.myVaults     
     },
     activeKeep(){
       return this.$store.state.activeKeep
+    },
+    getMyVaults(){
+      this.$store.dispatch("getMyVaults", this.activeKeep.id)
     }
   },
   methods: {

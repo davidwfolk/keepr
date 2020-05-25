@@ -5,26 +5,26 @@
       <h5 class="card-title text-center">{{keepData.name}}</h5>
       <!-- <p class="card-text">{{keep.description}}</p> -->
     </div>
-    <span v-if="user != undefined">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <span class="mx-2">
-            <i class="far fa-eye"></i>
-            : {{keepData.views}}
-          </span>
-          <span class="mx-2">
-            <i class="fas fa-download"></i>
-            : {{keepData.shares}}
-          </span>
-          <span class="mx-2">
-            <i class="fas fa-share"></i>
-            : {{keepData.keeps}}
-          </span>
-        </li>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <span class="mx-2">
+          <i class="far fa-eye"></i>
+          : {{keepData.views}}
+        </span>
+        <span class="mx-2">
+          <i class="fas fa-download"></i>
+          : {{keepData.shares}}
+        </span>
+        <span class="mx-2">
+          <i class="fas fa-share"></i>
+          : {{keepData.keeps}}
+        </span>
+      </li>
+      <span v-if="user != undefined">
         <Buttons :keepData="keepData"></Buttons>
-      </ul>
-    </span>
-    <span v-else></span>
+      </span>
+      <span v-else></span>
+    </ul>
   </div>
 </template>
 

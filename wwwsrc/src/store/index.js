@@ -180,10 +180,10 @@ export default new Vuex.Store({
 
         //SECTION VAULTKEEPS GET requests
 
-        async getVaultKeeps({ commit, dispatch }) {
+        async getVaultKeeps({ commit, dispatch }, vaultData) {
           try {
-            let res = await api.get("vaults")
-            commit("setVaults", res.data)
+            let res = await api.get(`vaults/${vaultData.id}/keeps`)
+            commit("setVaultKeeps", res.data)
           } catch (err) {
             alert(JSON.stringify(err));
           }
