@@ -68,11 +68,10 @@ export default {
   mounted() {
     return this.$store.state.vaultKeeps
   },
-  computed: {},
+  computed: {
+  },
   methods: {
     removeFromLocker() {
-      // console.log(this.vaultKeepData.vaultKeepId);
-      
       this.$store.dispatch("deleteVaultKeep", this.vaultKeepData.vaultKeepId)
       this.$store.dispatch("getMyVaultKeeps", this.$route.params.vaultId)
     }

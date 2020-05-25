@@ -1,7 +1,10 @@
 <template>
   <div class="vaultkeep text-center">
     <h1 class="text-white text-center">Welcome to the Lockroom</h1>
-    <h4 class="text-white text-center">Here you'll find all of your saved posts in your lockers</h4>
+    <h4 class="text-white text-center">Here are the saved posts in the {{vaultData.name}} locker</h4>
+    <button class="btn btn-danger" @click="deleteVault()">
+      Delete this Locker
+    </button>
     <div class="container-fluid">
       <div class="row justify-content-center">
         <VKeep v-for="vaultKeep in vaultKeeps" :key="vaultKeep.id" :vaultKeepData="vaultKeep"></VKeep>
@@ -24,11 +27,18 @@ export default {
       return this.$auth.user;
     },
     vaultKeeps() {
-      return this.$store.state.vaultKeeps
+      return this.$store.state.vaultKeeps;
+    },
+    vaultData() {
+      return this.$store.state.activeVault
     }
 
   },
-  methods: {},
+  methods: {
+    deleteVault() {
+      this.$store.dispatch("deleteVault", this.vaultData)
+    }
+  },
   components: {
     DisplayVaults,
     VKeep

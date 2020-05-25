@@ -41,6 +41,7 @@ export default {
   methods:{
     getVaultKeep() {
       this.$store.dispatch("getVaultKeeps", this.vaultData)
+      this.$store.commit("setActiveVault", this.vaultData)
       this.$router.push({name: 'vaultkeep', params: {vaultId: this.vaultData.id}})
       
 

@@ -13,11 +13,11 @@
         </span>
         <span class="mx-2">
           <i class="fas fa-download"></i>
-          : {{keepData.shares}}
+          : {{keepData.keeps}}
         </span>
         <span class="mx-2">
           <i class="fas fa-share"></i>
-          : {{keepData.keeps}}
+          : {{keepData.shares}}
         </span>
       </li>
       <span v-if="user != undefined">

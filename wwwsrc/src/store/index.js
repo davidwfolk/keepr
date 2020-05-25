@@ -27,6 +27,7 @@ export default new Vuex.Store({
     myVaults: [],
     vaults: [],
     vaultKeeps: [],
+    activeVault: {}
   },
   mutations: {
     setKeeps(state, keeps) {
@@ -48,6 +49,9 @@ export default new Vuex.Store({
     },
     setVaultKeeps(state, vaultKeeps) {
       state.vaultKeeps = vaultKeeps
+    },
+    setActiveVault(state, activeVault) {
+      state.activeVault = activeVault
     }
 
   },
@@ -158,7 +162,6 @@ export default new Vuex.Store({
         async createVault({ commit, dispatch }, newVault) {
           try {
           let res = await api.post("vaults", newVault)
-          debugger
           dispatch("getMyVaults")
         } catch (err) {
           alert(JSON.stringify(err));
@@ -172,7 +175,8 @@ export default new Vuex.Store({
         async deleteVault({ dispatch }, vaultData) {
           try {
             await api.delete("vaults/" + vaultData.id)
-            dispatch("getVaults")
+            dispatch("getMyVaults")
+            router.push("dashboard")
           } catch (error) {
             alert(JSON.stringify(error.response.data));
           }
