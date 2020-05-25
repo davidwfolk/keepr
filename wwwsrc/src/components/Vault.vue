@@ -54,11 +54,11 @@ export default {
   },
   methods: {
      addToVaultKeep(vault) {
+       this.activeKeep.keeps += 1;
+       this.$store.dispatch("editKeep", this.activeKeep )
         this.vaultKeep.vaultId = vault.id;
         this.vaultKeep.keepId = this.activeKeep.id;
         this.$store.dispatch("createVaultKeep", this.vaultKeep);
-        this.activeKeep.keeps += 1;
-        this.$store.dispatch("editKeep", this.activeKeep )
       }
   },
   components: {
