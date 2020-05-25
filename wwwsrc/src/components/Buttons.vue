@@ -16,15 +16,15 @@
             class="mx-2"
             data-toggle="modal"
             data-target="#addVaultModal"
-            @click="setActiveKeep()"
+            @click="VaultButton()"
             >
-            <i class="fas fa-share bg-warning p-3"></i>
+            <i class="fas fa-download bg-warning p-3"></i>
           </span>
-          <Modal title="Post Details" id="addVaultModal">
+          <Modal title="Add to Your Locker" id="addVaultModal">
               <Vault :keepData="keepData"></Vault>
             </Modal>
           <span class="mx-2">
-            <i class="fas fa-download bg-primary p-3"></i>
+            <i class="fas fa-share bg-primary p-3"></i>
           </span>
         </li>
 
@@ -42,15 +42,17 @@ export default {
   data(){
     return {}
   },
-  computed:{},
+  computed:{
+  },
   methods:{
     getActiveKeep() {
       this.keepData.views += 1,
       this.$store.dispatch("editKeep", this.keepData )
       this.$store.commit("setActiveKeep", this.keepData)
     },
-    setActiveKeep() {
-      this.$store.commit("setActiveKeep", this.keepData) 
+    VaultButton() {
+      this.$store.commit("setActiveKeep", this.keepData)
+      this.$store.dispatch("getMyVaults", this.keepData.userId) 
     }
   },
   components:{

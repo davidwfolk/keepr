@@ -21,7 +21,7 @@
           v-model="newVault.description"
         />
       </div>
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Create Vault</button>
+      <button type="submit" class="btn btn-primary" data-dismiss="modal">Create Locker</button>
     </form>
   </div>
 </template>

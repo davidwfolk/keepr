@@ -7,16 +7,16 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <span class="mx-3">
+          <span class="mx-2">
             <i class="far fa-eye"></i>
             : {{keepData.views}}
           </span>
-          <span class="mx-3">
-            <i class="fas fa-share"></i>
+          <span class="mx-2">
+            <i class="fas fa-download"></i>
             : {{keepData.shares}}
           </span>
-          <span class="mx-3">
-            <i class="fas fa-download"></i>
+          <span class="mx-2">
+            <i class="fas fa-share"></i>
             : {{keepData.keeps}}
           </span>
         </li>
