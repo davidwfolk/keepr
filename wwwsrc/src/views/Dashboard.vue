@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center mb-3">
         <button
-          class="btn btn-secondary mt-3 col-md-2 mr-auto ml-5"
+          class="btn btn-secondary mt-3 col-8 col-md-2 mx-auto"
           type="button"
           data-toggle="modal"
           data-target="#createKeepModal"
@@ -13,7 +13,7 @@
           <CreateKeep></CreateKeep>
         </Modal>
         <button
-          class="btn btn-secondary mt-3 col-md-2 ml-auto mr-5"
+          class="btn btn-secondary mt-3 col-8 col-md-2 mx-auto"
           type="button"
           data-toggle="modal"
           data-target="#createVaultModal"
