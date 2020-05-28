@@ -17,6 +17,7 @@
           href="#"
           :value="vault"
           @click="addToVaultKeep(vault)"
+          data-dismiss="modal"
         >{{vault.name}}</a>
       </div>
     </div>
