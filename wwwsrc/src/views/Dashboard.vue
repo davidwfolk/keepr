@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h3 class="text-white text-center mt-3">Welcome to Your Board {{user.name}}</h3>
+    <h3 class="text-white text-center mt-3">Welcome to Your Locker Room {{user.name}}</h3>
     <div class="container-fluid">
       <div class="row justify-content-center mb-3">
         <button

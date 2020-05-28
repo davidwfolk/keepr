@@ -22,6 +22,8 @@ export default {
   data() {
     return {}
   },
+  mounted(){
+  },
   computed: {
     user() {
       return this.$auth.user;

@@ -71,8 +71,8 @@ export default {
   computed: {
   },
   methods: {
-    removeFromLocker() {
-      this.$store.dispatch("deleteVaultKeep", this.vaultKeepData.vaultKeepId)
+    async removeFromLocker() {
+      await this.$store.dispatch("deleteVaultKeep", this.vaultKeepData.vaultKeepId)
       this.$store.dispatch("getMyVaultKeeps", this.$route.params.vaultId)
     }
   },
