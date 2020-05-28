@@ -1,8 +1,7 @@
 <template>
   <div class="vaultkeep text-center">
-    <h1 class="text-white text-center">Welcome to the Lockroom</h1>
-    <h4 class="text-white text-center">Here are the saved posts in the {{vaultData.name}} locker</h4>
-    <button class="btn btn-danger" @click="deleteVault()">
+    <h1 class="text-white text-center mt-2 mb-4">All golf gear in your {{vaultData.name}} locker </h1>
+    <button class="btn btn-danger mb-4" @click="deleteVault()">
       Delete this Locker
     </button>
     <div class="container-fluid">

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">Par-adise</router-link>
+    <router-link class="navbar-brand mr-1" :to="{ name: 'home' }"><img class="img-fluid pb-2" src="../../public/par-adise.png"/></router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -62,4 +62,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+</style>
