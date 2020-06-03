@@ -69,7 +69,7 @@ export default new Vuex.Store({
         let res = await api.get("keeps/user", userData)
         commit("setMyKeeps", res.data)
       } catch (err) {
-        alert(JSON.stringify(err));
+        console.error(err);
       }
     },
 
@@ -78,7 +78,7 @@ export default new Vuex.Store({
         let res = await api.get("keeps")
         commit("setKeeps", res.data)
       } catch (err) {
-        alert(JSON.stringify(err));
+        console.error(err);
       }
     },
 
@@ -100,7 +100,7 @@ export default new Vuex.Store({
           let res = await api.post("keeps", newKeep)
           dispatch("getMyKeeps")
         } catch (err) {
-          alert(JSON.stringify(err));
+          console.error(err);
         }
         },
 
@@ -113,7 +113,7 @@ export default new Vuex.Store({
           let res = await api.put("keeps/" + keepData.id, keepData)
           dispatch("getKeeps")
         } catch (err) {
-          alert(JSON.stringify(err));
+          console.error(err);
         }
         },
 
@@ -126,7 +126,7 @@ export default new Vuex.Store({
             await api.delete("keeps/" + keepData.id)
             dispatch("getMyKeeps")
           } catch (error) {
-            alert(JSON.stringify(error.response.data));
+            console.error(error);
           }
         },
 
@@ -142,7 +142,7 @@ export default new Vuex.Store({
             let res = await api.get("vaults")
             commit("setVaults", res.data)
           } catch (err) {
-            alert(JSON.stringify(err));
+            console.error(err);
           }
         },
 
@@ -151,7 +151,7 @@ export default new Vuex.Store({
             let res = await api.get("vaults/user", userData)
             commit("setMyVaults", res.data)
           } catch (err) {
-            alert(JSON.stringify(err));
+            console.error(err);
           }
         },
 
@@ -164,7 +164,7 @@ export default new Vuex.Store({
           let res = await api.post("vaults", newVault)
           dispatch("getMyVaults")
         } catch (err) {
-          alert(JSON.stringify(err));
+          console.error(err);
         }
         },
 
@@ -178,7 +178,7 @@ export default new Vuex.Store({
             dispatch("getMyVaults")
             router.push("dashboard")
           } catch (error) {
-            alert(JSON.stringify(error.response.data));
+            console.error(error);
           }
         },
 
@@ -194,7 +194,7 @@ export default new Vuex.Store({
             let res = await api.get(`vaults/${vaultData.id}/keeps`)
             commit("setVaultKeeps", res.data)
           } catch (err) {
-            alert(JSON.stringify(err));
+            console.error(err);
           }
         },
 
@@ -203,7 +203,7 @@ export default new Vuex.Store({
             let res = await api.get(`vaults/${vaultId}/keeps`)
             commit("setVaultKeeps", res.data)
           } catch (err) {
-            alert(JSON.stringify(err));
+            console.error(err);
           }
         },
 
@@ -216,7 +216,7 @@ export default new Vuex.Store({
           let res = await api.post("vaultkeeps", newVaultKeep)
           dispatch("getMyVaultKeeps", newVaultKeep.vaultId)
         } catch (err) {
-          alert(JSON.stringify(err));
+          console.error(err);
         }
         },
 
@@ -229,7 +229,7 @@ export default new Vuex.Store({
           let res = await api.delete("vaultkeeps/" + vaultKeepId)
           // dispatch("getVaultKeeps", vault)
         } catch (err) {
-          alert(JSON.stringify(err));
+          console.error(err);
         }
         },
 
